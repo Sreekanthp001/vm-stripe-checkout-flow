@@ -2,43 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Stripe Checkout Sample</title>
-    <meta name="description" content="A demo of Stripe Payment Intents" />
-
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/normalize.css" />
+    <title>Payment Successful | Venturemond</title>
     <link rel="stylesheet" href="css/global.css" />
-
-    <script src="./success.js" defer></script>
   </head>
-
   <body>
-    <div class="togethere-background"></div>
     <div class="sr-root">
-      <div class="sr-main">
+      <div class="sr-main" style="text-align: center; padding-top: 50px;">
         <div class="sr-payment-summary completed-view">
-            <h1>Your payment succeeded</h1>
-            <h4>
-              View CheckoutSession response:
-            </h4>
+            <h1 style="color: #24b47e;">✔ Payment Succeeded</h1>
+            <h2 id="plan-name">Thank you for choosing Venturemond</h2>
+            <p>Your subscription is now active. We've sent a receipt to your email.</p>
           </div>
           <div class="completed-view-section">
-            <pre>
-
-            </pre>
-            <button onclick="window.location.href = '/';">Restart demo</button>
-
-            <form action="/customer-portal" method="POST">
-              <!-- In practice, use the Stripe customer ID on the server to redirect to the customer portal. This is for demo: -->
-              <input type="hidden" name="sessionId" id="sessionId" />
-
-              <button>Manage Billing</button>
-            </form>
+            <button onclick="window.location.href = '/';" style="padding: 10px 20px; background: #635bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Return to Dashboard
+            </button>
           </div>
-        </div>
-        <div class="sr-content">
-        </div>
       </div>
     </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan');
+        if(plan) {
+            document.getElementById('plan-name').innerText = "Venturemond " + plan + " Activated!";
+        }
+    </script>
   </body>
 </html>
